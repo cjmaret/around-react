@@ -2,15 +2,6 @@ import React from 'react';
 
 function ImagePopup(props) {
 
-    function yuck() {
-        console.log(props.card);
-        console.log(props.card.link);
-    }
-    yuck();
-
-
-    
-
     return (
         <div className={`modal image-expand modal_open`} key={props.card._id}>
             <div className="image-expand__container">
