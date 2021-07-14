@@ -17,11 +17,14 @@ function Main(props) {
                 setUserDescription(res.about);
                 setUserAvatar(res.avatar);
             })
+            .catch((err) => console.log(err));
+
         api.getCardList()
             .then(res => {
                 setCards(res);
             })
-    })
+            .catch((err) => console.log(err));
+    }, []);
 
     
 
@@ -51,7 +54,7 @@ function Main(props) {
 
                 {cards.map(card => {
                     return (
-                        <Card name={card.name} id={card._id} link={card.link} card={card} onCardClick={props.onCardClick}/>
+                        <Card key={card._id} name={card.name} id={card._id} link={card.link} likes={card.likes.length} card={card} onCardClick={props.onCardClick}/>
                     )
                 })}
 

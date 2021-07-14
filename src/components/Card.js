@@ -8,14 +8,14 @@ function Card(props) {
 
 
     return (
-        <div className="image-card" key={props.id}>
+        <div className="image-card">
             <button className="image-card__trash" type="button" aria-label="trash button"></button>
             <img className="image-card__image" src={props.link} alt={props.name} onClick={handleClick} />
             <div className="image-card__text">
                 <h2 className="image-card__title">{props.name}</h2>
                 <div className="image-card__heart-group">
                     <button className="image-card__heart" aria-label="Like button" type="button"></button>
-                    <p className="image-card__heart-number"></p>
+                    <p className="image-card__heart-number">{props.likes}</p>
                 </div>
             </div>
         </div>

@@ -49,7 +49,7 @@ function App() {
       <EditInfoPopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
       <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
       <ProfileImagePopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
-      {selectedCard && <ImagePopup card={selectedCard}  onClose={closeAllPopups}/>}
+      <ImagePopup card={selectedCard}  onClose={closeAllPopups}/>
 
 
 
