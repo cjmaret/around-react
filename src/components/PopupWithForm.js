@@ -9,7 +9,7 @@ function PopupWithForm(props) {
                 <div className="modal__container">
                     <button className={`modal__close-icon modal__close-icon_type_${props.name}`} type="button"
                         aria-label="close button" onClick={props.onClose}></button>
-                    <form className={`edit-box edit-box_type_${props.name}`} name="details">
+                    <form className={`edit-box edit-box_type_${props.name}`} name={props.name}>
                         <h2 className="edit-box__title">{props.title}</h2>
                         {props.children}
                         <button className="edit-box__button edit-box__button_edit" type="submit"
