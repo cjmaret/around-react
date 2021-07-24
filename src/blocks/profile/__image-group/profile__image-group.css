@@ -3,3 +3,9 @@
     height: 120px;
     position: relative;
 }
+
+@media only screen and (max-width: 704px) {
+    .profile__image-group {
+        margin: auto;
+    }
+}

@@ -2,8 +2,29 @@ import React from 'react';
 
 function ImagePopup(props) {
 
+    React.useEffect(() => {
+
+        function close(e) {
+            if (e.key === 'Escape') {
+                props.onClose();
+            }
+        };
+
+        window.addEventListener('keydown', close);
+
+        return () => window.removeEventListener('keydown', close);
+
+}, [props]);
+
+function handleClickOutside(e) {
+    if (e.target.classList.contains('modal')) {
+        e.preventDefault();
+        props.onClose();
+    }
+}
+
     return (
-        <div className={`modal image-expand ${props.card ? 'modal_open' : ''}`}>
+        <div className={`modal image-expand ${props.card ? 'modal_open' : ''}`} onClick={handleClickOutside}>
             <div className="image-expand__container">
                 <button className="modal__close-icon modal__close-icon_type_image" type="button"
                     aria-label="close button" onClick={props.onClose}></button>

@@ -1,32 +1,12 @@
 import React from 'react';
-import api from '../utils/api';
 import Card from './Card';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Main(props) {
 
-    const [userName, setUserName] = React.useState();
-    const [userDescription, setUserDescription] = React.useState();
-    const [userAvatar, setUserAvatar] = React.useState();
-    const [cards, setCards] = React.useState([]);
+    const currentUser = React.useContext(CurrentUserContext)
 
 
-    React.useEffect(() => {
-        api.getUserInfo()
-            .then(res => {
-                setUserName(res.name);
-                setUserDescription(res.about);
-                setUserAvatar(res.avatar);
-            })
-            .catch((err) => console.log(err));
-
-        api.getCardList()
-            .then(res => {
-                setCards(res);
-            })
-            .catch((err) => console.log(err));
-    }, []);
-
-    
 
     return (
         <main className="main">
@@ -36,14 +16,14 @@ function Main(props) {
                     <div className="profile__image-group">
                         <button className="profile__image-overlay" type="button"
                             aria-label="profile image edit button" onClick={props.onEditAvatarClick}></button>
-                        <img className="profile__image" src={userAvatar} alt="profile" />
+                        <img className="profile__image" src={currentUser?.avatar} alt="profile" />
                     </div>
                     <div className="profile__info">
                         <div className="profile__line-top">
-                            <h1 className="profile__title">{userName}</h1>
+                            <h1 className="profile__title">{currentUser?.name}</h1>
                             <button className="profile__button-edit" type="button" aria-label="edit button" onClick={props.onEditProfileClick}></button>
                         </div>
-                        <p className="profile__subtitle">{userDescription}</p>
+                        <p className="profile__subtitle">{currentUser?.about}</p>
                     </div>
                 </div>
                 <button className="profile__button-add" type="button" aria-label="add button" onClick={props.onAddPlaceClick}></button>
@@ -52,9 +32,9 @@ function Main(props) {
 
             <section className="image-grid">
 
-                {cards.map(card => {
+                {props.cards.map(card => {
                     return (
-                        <Card key={card._id} name={card.name} id={card._id} link={card.link} likes={card.likes.length} card={card} onCardClick={props.onCardClick}/>
+                        <Card key={card._id} name={card.name} id={card._id} link={card.link} likes={card.likes.length} card={card} onCardClick={props.onCardClick} onCardLike={props.onCardLike} onDeleteCardClick={props.onDeleteCardClick}/>
                     )
                 })}
 
