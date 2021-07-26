@@ -8,7 +8,7 @@ function PopupWithForm(props) {
                 props.onClose();
             }
         };
-        window.addEventListener('keydown', close);
+        props.isOpen && window.addEventListener('keydown', close);
         return () => window.removeEventListener('keydown', close);
     }, [props]);
 

@@ -143,7 +143,6 @@ function App() {
       <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} isLoading={isLoading} onRenderLoading={handleChangeButtonText}/>
       <DeleteCardPopup cardToDelete={cardToDelete} isOpen={isDeleteCardPopupOpen} onClose={closeAllPopups} onDeleteCardSubmit={handleCardDelete} isLoading={isLoading} onRenderLoading={handleChangeButtonText} />
       <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-      <script src="https://unpkg.com/regenerator-runtime@0.13.1/runtime.js"></script>
     </CurrentUserContext.Provider>
   );
 
